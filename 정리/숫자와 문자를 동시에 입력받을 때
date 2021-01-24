@@ -1,0 +1,12 @@
+int result, num;
+char o;
+cin >> result;
+while (cin >> o)
+	{
+	  cin >> num;
+    if(0 == '+')
+      result += num;
+    else if(0 == '-')
+      result -= num;
+	}
+	cout << result;
