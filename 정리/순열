@@ -1,0 +1,28 @@
+num부터 n까지의 자연수 중 m개를 선택하는 순열
+
+int arr[MAX] = { 0, }; // 출력할 원소를 담아두는 곳
+bool visited[MAX] = { 0, }; // 출력할 원소들을 표시
+
+void P(int cnt, int num) {        
+    if (cnt == m) {
+        for (int i = 0; i < m; i++)
+            cout << arr[i] << ' ';
+        cout << '\n';
+        return;
+    }
+    for (int i = num; i <= n; i++) // num부터 n까지 확인한다.
+    {
+        if (!visited[i]) // 방문하지 않았다면
+        {
+            visited[i] = true; 
+            arr[cnt] = i; // 원소를 선택하고
+            P(cnt + 1, i + 1); // 다음 원소를 선택하러 간다.
+            visited[i] = false; // 원상복귀
+        }
+    }
+}
+
+int main(){
+  ...
+  P(0, 1);
+}

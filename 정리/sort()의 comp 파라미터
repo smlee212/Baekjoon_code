@@ -1,0 +1,13 @@
+기본적으로 sort는 오름차순
+comp함수를 선언하여 원하는 방식으로 정렬 가능하다.
+
+	sort(str.begin(), str.end(), comp);
+
+  bool comp(string a, string b) {
+	if (a.size() == b.size()) {
+		return a < b;
+	}
+	else {
+		return a.size() < b.size();
+	}
+}

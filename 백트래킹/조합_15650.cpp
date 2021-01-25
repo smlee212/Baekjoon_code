@@ -24,7 +24,6 @@ void P(int cnt, int num) {
             arr[cnt] = i; 
             P(cnt + 1, i+1);
             visited[i] = false;
-
         }
     }
 }
