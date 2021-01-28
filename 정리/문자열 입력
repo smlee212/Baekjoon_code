@@ -1,0 +1,16 @@
+2차원 행렬을 문자열로 받을 경우
+///////////////////
+2 4
+ABCD
+FSAC
+///////////////////
+
+string str;
+cin >> col_size >> row_size;
+
+for (int i = 0; i < col_size; i++) {
+  cin >> str;
+  for (int j = 0; j < str.size(); j++) {
+    map[i][j] = (str[j] - '0') - 17; // A는 17
+  }
+}
