@@ -1,0 +1,64 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.IOException; 
+
+class Main {
+    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static StringBuilder sb = new StringBuilder();
+  
+    static int n;
+    static int W = 0, B = 0;
+    static int[][] map;
+    
+	public static void div(int y, int x, int size) {
+		if(Check(y,x,size)) {
+			if(map[y][x] == 0) W++;			
+			else B++;
+			return;
+		}
+		
+		int nextSize = size / 2;
+		
+		div(y,x,nextSize);
+		div(y,x+nextSize,nextSize);
+		div(y+nextSize,x,nextSize);
+		div(y+nextSize,x+nextSize,nextSize);
+	}
+	
+	public static boolean Check(int y, int x, int size) {
+		int color = map[y][x];
+		
+		for(int i=y;i<y+size;i++) {
+			for(int j=x;j<x+size;j++) {
+				if(map[i][j] != color) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
+    
+	public static void main(String[] args) throws IOException  {
+		n = Integer.parseInt(br.readLine());
+		map = new int[n][n];
+		
+		StringTokenizer st;
+		for(int i=0;i<n;i++) {
+			st = new StringTokenizer(br.readLine());
+			for(int j=0;j<n;j++) {
+				map[i][j] = Integer.parseInt(st.nextToken());
+			}
+		}
+		
+		div(0,0,n);		
+		
+		bw.write(sb.append(W+"\n"+B).toString());
+		bw.close();
+		br.close();
+	}	
+}
